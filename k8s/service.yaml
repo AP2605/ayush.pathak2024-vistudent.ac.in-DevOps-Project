@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: tourism-info-portal
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: tourism-info-portal
+
+  ports:
+    - name: app
+      port: 8085
+      targetPort: 8081
+      nodePort: 30081
+
+    - name: actuator
+      port: 9095
+      targetPort: 9090
+      nodePort: 30090

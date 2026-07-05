@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: tourism-info-portal
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: tourism-info-portal
+
+  template:
+    metadata:
+      labels:
+        app: tourism-info-portal
+
+    spec:
+      containers:
+        - name: tourism-info-portal-container
+          image: 26ayush007/tourism_info_portal:v1
+          imagePullPolicy: Always
+
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+
+          ports:
+            - containerPort: 8081
+            - containerPort: 9090
